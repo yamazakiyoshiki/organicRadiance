@@ -1,8 +1,9 @@
-// "use client";
-import { Box, useTheme } from "@chakra-ui/react";
-import { px } from "framer-motion";
+import MainVisual from "./components/MainVisual/MainVisual";
 
 export default function Home() {
-  // const { color } = useTheme();
-  return;
+  return (
+    <>
+      <MainVisual />
+    </>
+  );
 }
