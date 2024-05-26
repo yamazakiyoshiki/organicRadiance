@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
-import { Image } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 
@@ -18,17 +18,23 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Providers>
-          <Image
-            src="/logo.png"
-            alt=""
-            sx={{
-              width: "90px",
-              position: "fixed",
-            }}
-          />
-          <Navbar />
-          {children}
-          <Footer />
+          <Box display="flex" flexDirection="column" minHeight="100vh">
+            <Navbar />
+            <Box flex="1">
+              <Image
+                src="/logo.png"
+                alt=""
+                sx={{
+                  width: "80px",
+                  position: "fixed",
+                  top: "0px",
+                  left: "10px",
+                }}
+              />
+              {children}
+            </Box>
+            <Footer />
+          </Box>
         </Providers>
       </body>
     </html>

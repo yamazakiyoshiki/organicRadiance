@@ -10,30 +10,29 @@ const Footer = () => {
       color="#123d19"
       py={2}
       sx={{
-        position: "fixed",
-        bottom: "0",
         width: "100vw",
       }}
     >
-      <Link href="/">
-        <Image
-          src="logo.png"
-          alt=""
-          sx={{
-            width: "90px",
-            display: "block",
-            mx: "auto",
-          }}
-        />
-      </Link>
       <Flex
         maxW="1200px"
+        h={{ base: "200px", md: "60px" }}
         mx="auto"
         gap="20px"
         direction={{ base: "column", md: "row" }}
         justifyContent="center"
         alignItems="center"
       >
+        <Link href="/">
+          <Image
+            src="/logo.png"
+            alt=""
+            sx={{
+              width: "90px",
+              display: "block",
+              mx: "auto",
+            }}
+          />
+        </Link>
         <Flex alignItems="center">
           <Flex>
             <IconButton

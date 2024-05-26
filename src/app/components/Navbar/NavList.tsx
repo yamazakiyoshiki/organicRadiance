@@ -1,5 +1,6 @@
 "use client";
 
+import OriginalButton from "@/app/ui/OriginalButton";
 import { Button, Flex, Link, Text, useBreakpointValue } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 
@@ -27,21 +28,29 @@ const NavList = ({ links }: NavListProps) => {
       >
         {links?.map((link) => {
           return (
-            <Button
+            <OriginalButton
               key={link.content}
-              color="#123d19"
-              backgroundColor="#ebebeb"
-            >
-              <Link
-                href={link.path}
-                display="flex"
-                gap="10px"
-                alignItems="center"
-              >
-                {link.content}
-                {link.icon}
-              </Link>
-            </Button>
+              path={link.path}
+              text={link.content}
+              icon={link.icon}
+            />
+            // <Button
+            //   key={link.content}
+            //   color="#123d19"
+            //   backgroundColor="#ebebeb"
+            //   _hover={{ bg: "#a1a1a1", transition: "0.3s" }}
+            // >
+            //   <Link
+            //     href={link.path}
+            //     display="flex"
+            //     gap="10px"
+            //     alignItems="center"
+            //     _hover={{ textDecoration: "none" }}
+            //   >
+            //     {link.icon}
+            //     {link.content}
+            //   </Link>
+            // </Button>
           );
         })}
       </Flex>

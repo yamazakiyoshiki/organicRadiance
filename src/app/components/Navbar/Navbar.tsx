@@ -9,22 +9,22 @@ import ResponsiveNav from "./ResponsiveNav";
 
 const links = [
   {
-    path: "#",
+    path: "/",
     content: "TOP",
     icon: <IoHomeSharp />,
   },
   {
-    path: "#",
+    path: "/concept",
     content: "CONCEPT",
     icon: <MdOutlineEmojiObjects />,
   },
   {
-    path: "#",
+    path: "/product",
     content: "PRODUCT",
     icon: <FaShoppingCart />,
   },
   {
-    path: "#",
+    path: "contact",
     content: "CONTACT",
     icon: <IoMdInformationCircle />,
   },

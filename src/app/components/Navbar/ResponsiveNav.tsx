@@ -70,8 +70,8 @@ const ResponsiveNav = ({ links }: ResponsiveNavProps) => {
                     textDecoration="none"
                     _hover={{ textDecoration: "none" }}
                   >
-                    {link.content}
                     {link.icon}
+                    {link.content}
                   </Link>
                 </Button>
               );
