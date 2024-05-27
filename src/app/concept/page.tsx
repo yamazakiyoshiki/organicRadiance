@@ -1,9 +1,9 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import ConceptCard from "./ConceptCard";
-import { CardItem } from "../types/conceptCardType";
+import { ConceptCardItem } from "../types/CardType";
 
-const cardItems: CardItem[] = [
+const cardItems: ConceptCardItem[] = [
   {
     title: "Radiance of Nature",
     desc: "OrganicRadianceは、自然の純粋なエッセンスを活かしたオーガニックビューティ製品を提供します。\n私たちの製品は、厳選された天然成分を使用し、環境に配慮した持続可能な方法で作られています。\n自然の恵みを最大限に活かし、美しさと健康を内側から引き出すことを目指します。",
@@ -17,6 +17,7 @@ const cardItems: CardItem[] = [
     img: "/concept4.webp",
     flexDirection: "row-reverse",
     backGroundColor: "#4444",
+    isButton: false,
   },
 ];
 
@@ -39,7 +40,6 @@ const page = () => {
           <ConceptCard cardItems={cardItems} />
         </Box>
       </Box>
-      {/* <Footer /> */}
     </>
   );
 };

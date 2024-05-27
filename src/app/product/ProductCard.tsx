@@ -1,25 +1,27 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import { ConceptCardItem } from "../types/CardType";
+import { ProductCardItem } from "../types/CardType";
 import OriginalButton from "../ui/OriginalButton";
+import { FaShoppingCart } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 
-type ConceptCardProps = {
-  cardItems: ConceptCardItem[];
+type ProductCardProps = {
+  cardItems: ProductCardItem[];
 };
 
-const ConceptCard = ({ cardItems }: ConceptCardProps) => {
+const ProductCard = ({ cardItems }: ProductCardProps) => {
   return (
     <>
       {cardItems.map((item) => (
         <Flex
           key={item.title}
-          direction={{ base: "column-reverse", md: item.flexDirection }}
+          direction={{ base: "column", md: item.flexDirection }}
           justifyContent="center"
           px={{ base: "50px", md: "30px" }}
           py={{ base: "50px", md: "80px" }}
           mx={{ base: "20px", md: "30px" }}
-          my="50px"
+          mb="50px"
+          mt="100px"
           gap="70px"
           backgroundColor={item.backGroundColor}
           borderRadius="15px"
@@ -29,6 +31,7 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
             direction={"column"}
             textAlign="center"
             maxWidth={{ base: "100%", md: "40%" }}
+            gap="40px"
           >
             <Heading
               as="h2"
@@ -41,7 +44,7 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
               {item.title}
             </Heading>
             <Text
-              mt="50px"
+              mt="30px"
               whiteSpace="pre-line"
               textAlign="left"
               letterSpacing="0.1em"
@@ -49,15 +52,17 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
             >
               {item.desc}
             </Text>
-            {item.isButton && (
-              <Box>
+            <Box>
+              {item.buttonType === "cart" ? (
                 <OriginalButton
-                  path="/concept"
-                  icon={<IoMdAdd />}
-                  text="More"
+                  path="/"
+                  icon={<FaShoppingCart />}
+                  text="Cart"
                 />
-              </Box>
-            )}
+              ) : (
+                <OriginalButton path="/" icon={<IoMdAdd />} text="More" />
+              )}
+            </Box>
           </Flex>
         </Flex>
       ))}
@@ -65,4 +70,4 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
   );
 };
 
-export default ConceptCard;
+export default ProductCard;

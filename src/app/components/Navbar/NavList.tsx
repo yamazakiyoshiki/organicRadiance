@@ -1,7 +1,7 @@
 "use client";
 
 import OriginalButton from "@/app/ui/OriginalButton";
-import { Button, Flex, Link, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, useBreakpointValue } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 
 type NavListProps = {

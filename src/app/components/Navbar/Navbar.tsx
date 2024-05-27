@@ -1,10 +1,9 @@
-import { Button, Flex, HStack, Link, Stack, Text } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React from "react";
 import NavList from "./NavList";
 import { IoHomeSharp } from "react-icons/io5";
-import { FaShoppingCart } from "react-icons/fa";
 import { IoMdInformationCircle } from "react-icons/io";
-import { MdOutlineEmojiObjects } from "react-icons/md";
+import { MdOutlineBatteryFull, MdOutlineEmojiObjects } from "react-icons/md";
 import ResponsiveNav from "./ResponsiveNav";
 
 const links = [
@@ -21,7 +20,7 @@ const links = [
   {
     path: "/product",
     content: "PRODUCT",
-    icon: <FaShoppingCart />,
+    icon: <MdOutlineBatteryFull />,
   },
   {
     path: "contact",

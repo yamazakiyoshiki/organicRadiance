@@ -1,6 +1,5 @@
 import { Button, Link } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
-import { IoMdAdd } from "react-icons/io";
 
 type OriginalButtonProps = {
   path: string;
