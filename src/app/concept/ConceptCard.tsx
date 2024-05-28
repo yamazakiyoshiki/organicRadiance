@@ -35,8 +35,8 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
               whiteSpace="normal"
               fontWeight="medium"
               fontFamily="'Times New Roman', serif"
-              size="xl"
               color="#545855"
+              size="xl"
             >
               {item.title}
             </Heading>

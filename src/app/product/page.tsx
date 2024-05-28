@@ -42,7 +42,7 @@ const page = () => {
   return (
     <>
       <Box mt="80px">
-        <Image src="/concept3.jpg" alt="" />
+        <Image src="/main_product.webp" alt="" />
         <Box mt="100px">
           <Heading
             as="h1"

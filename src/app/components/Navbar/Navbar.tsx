@@ -23,7 +23,7 @@ const links = [
     icon: <MdOutlineBatteryFull />,
   },
   {
-    path: "contact",
+    path: "/contact",
     content: "CONTACT",
     icon: <IoMdInformationCircle />,
   },

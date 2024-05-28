@@ -3,6 +3,7 @@ import MainVisual from "./components/MainVisual/MainVisual";
 import ConceptCard from "./concept/ConceptCard";
 import { ConceptCardItem, ProductCardItem } from "./types/CardType";
 import ProductCard from "./product/ProductCard";
+import FAQ from "./contact/Faq";
 
 const conceptCardItems: ConceptCardItem[] = [
   {
@@ -55,6 +56,9 @@ export default function Home() {
           PRODUCT
         </Heading>
         <ProductCard cardItems={productCardItems} />
+        <Box mt="100px" mb="50px">
+          <FAQ />
+        </Box>
       </Box>
     </>
   );
