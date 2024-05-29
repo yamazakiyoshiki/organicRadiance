@@ -1,8 +1,9 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import { ConceptCardItem } from "../types/CardType";
 import OriginalButton from "../ui/OriginalButton";
 import { IoMdAdd } from "react-icons/io";
+import AnimatedImage from "../ui/AnimatedImage";
 
 type ConceptCardProps = {
   cardItems: ConceptCardItem[];
@@ -10,21 +11,29 @@ type ConceptCardProps = {
 
 const ConceptCard = ({ cardItems }: ConceptCardProps) => {
   return (
-    <>
+    <Box mx="auto" maxWidth="1200px">
       {cardItems.map((item) => (
         <Flex
           key={item.title}
-          direction={{ base: "column-reverse", md: item.flexDirection }}
+          direction={{ base: "column", md: item.flexDirection }}
           justifyContent="center"
-          px={{ base: "50px", md: "30px" }}
+          alignItems="center"
+          px={{ base: "50px", md: "100px" }}
           py={{ base: "50px", md: "80px" }}
-          mx={{ base: "20px", md: "30px" }}
+          mx={{ base: "30px", md: "80px" }}
           my="50px"
           gap="70px"
           backgroundColor={item.backGroundColor}
           borderRadius="15px"
         >
-          <Image src={item.img} w="400px" h="400px" alt="" />
+          {/* <Image
+            src={item.img}
+            mx="auto"
+            w={{ base: "250px", md: "300px" }}
+            h={{ base: "250px", md: "300px" }}
+            alt=""
+          /> */}
+          <AnimatedImage key={item.title} itemImg={item.img} />
           <Flex
             direction={"column"}
             textAlign="center"
@@ -49,19 +58,19 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
             >
               {item.desc}
             </Text>
-            {item.isButton && (
-              <Box>
+            <Box mt="50px">
+              {item.isButton && (
                 <OriginalButton
                   path="/concept"
                   icon={<IoMdAdd />}
                   text="More"
                 />
-              </Box>
-            )}
+              )}
+            </Box>
           </Flex>
         </Flex>
       ))}
-    </>
+    </Box>
   );
 };
 

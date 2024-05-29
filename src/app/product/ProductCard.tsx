@@ -1,9 +1,9 @@
-import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { ProductCardItem } from "../types/CardType";
 import OriginalButton from "../ui/OriginalButton";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
+import AnimatedImage from "../ui/AnimatedImage";
 
 type ProductCardProps = {
   cardItems: ProductCardItem[];
@@ -11,22 +11,22 @@ type ProductCardProps = {
 
 const ProductCard = ({ cardItems }: ProductCardProps) => {
   return (
-    <>
+    <Box mx="auto" maxWidth="1200px">
       {cardItems.map((item) => (
         <Flex
           key={item.title}
           direction={{ base: "column", md: item.flexDirection }}
           justifyContent="center"
-          px={{ base: "50px", md: "30px" }}
+          px={{ base: "50px", md: "100px" }}
           py={{ base: "50px", md: "80px" }}
-          mx={{ base: "20px", md: "30px" }}
+          mx={{ base: "30px", md: "80px" }}
           mb="50px"
           mt="100px"
           gap="70px"
           backgroundColor={item.backGroundColor}
           borderRadius="15px"
         >
-          <Image src={item.img} w="400px" h="400px" alt="" />
+          <AnimatedImage key={item.title} itemImg={item.img} />
           <Flex
             direction={"column"}
             textAlign="center"
@@ -66,7 +66,7 @@ const ProductCard = ({ cardItems }: ProductCardProps) => {
           </Flex>
         </Flex>
       ))}
-    </>
+    </Box>
   );
 };
 
