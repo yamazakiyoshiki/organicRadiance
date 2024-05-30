@@ -2,6 +2,7 @@ import { Box, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import { ProductCardItem } from "../types/CardType";
 import ProductCard from "./ProductCard";
+import CartProvider from "../context/ProductsCartContext";
 
 const productItems: ProductCardItem[] = [
   {
@@ -45,22 +46,24 @@ const productItems: ProductCardItem[] = [
 const page = () => {
   return (
     <>
-      <Box mt="80px">
-        <Image src="/main_product.webp" alt="" />
-        <Box mt="100px">
-          <Heading
-            as="h1"
-            textAlign="center"
-            color="#123d19"
-            fontWeight="medium"
-            fontFamily="'Times New Roman', serif"
-            size="2xl"
-          >
-            PRODUCT
-          </Heading>
-          <ProductCard cardItems={productItems} />
+      <CartProvider>
+        <Box mt="80px">
+          <Image src="/main_product.webp" alt="" />
+          <Box mt="100px">
+            <Heading
+              as="h1"
+              textAlign="center"
+              color="#123d19"
+              fontWeight="medium"
+              fontFamily="'Times New Roman', serif"
+              size="2xl"
+            >
+              PRODUCT
+            </Heading>
+            <ProductCard cardItems={productItems} />
+          </Box>
         </Box>
-      </Box>
+      </CartProvider>
     </>
   );
 };

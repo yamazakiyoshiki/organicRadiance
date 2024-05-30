@@ -1,4 +1,12 @@
-import React, { ReactNode, createContext, useContext, useReducer } from "react";
+"use client";
+
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useReducer,
+  useEffect,
+} from "react";
 
 type CartItem = {
   title: string;
@@ -23,14 +31,16 @@ const initialState: CartState = {
 };
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
+  let newState: CartState;
   switch (action.type) {
     case "ADD_ITEM":
-      return {
+      newState = {
         ...state,
         items: [...state.items, action.item],
-        total: state.amount + action.item.value,
-        amount: state.total + action.amount,
+        total: state.total + action.item.value,
+        amount: state.amount + action.amount,
       };
+      break;
     case "REMOVE_ITEM":
       const filteredItems = state.items.filter(
         (item) => item.title !== action.title
@@ -38,17 +48,26 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       const removeItem = state.items.find(
         (item) => item.title === action.title
       );
-      return {
+      newState = {
         ...state,
         items: filteredItems,
         total: removeItem ? state.total - removeItem.value : state.total,
-        amount: state.amount - action.amount,
+        amount: removeItem ? state.amount - action.amount : state.amount,
       };
+      break;
     case "CLEAR_CART":
-      return initialState;
+      newState = initialState;
+      break;
     default:
-      return state;
+      newState = state;
+      break;
   }
+
+  // 状態をローカルストレージに保存
+  if (typeof window !== "undefined") {
+    localStorage.setItem("cartState", JSON.stringify(newState));
+  }
+  return newState;
 };
 
 const CartContext = createContext<CartState | undefined>(undefined);
@@ -57,7 +76,20 @@ const CartDispatchContext = createContext<
 >(undefined);
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [state, dispatch] = useReducer(cartReducer, initialState, (initial) => {
+    if (typeof window !== "undefined") {
+      const storedState = localStorage.getItem("cartState");
+      return storedState ? JSON.parse(storedState) : initial;
+    }
+    return initial;
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cartState", JSON.stringify(state));
+    }
+  }, [state]);
+
   return (
     <CartContext.Provider value={state}>
       <CartDispatchContext.Provider value={dispatch}>
@@ -67,6 +99,20 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useCartState = () => useContext(CartContext);
-export const useCartDispatch = () => useContext(CartDispatchContext);
+export const useCartState = () => {
+  const context = useContext(CartContext);
+  if (context === undefined) {
+    throw new Error("state is undefined");
+  }
+  return context;
+};
+
+export const useCartDispatch = () => {
+  const context = useContext(CartDispatchContext);
+  if (context === undefined) {
+    throw new Error("dispatch is undefined");
+  }
+  return context;
+};
+
 export default CartProvider;

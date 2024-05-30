@@ -4,6 +4,7 @@ import ConceptCard from "./concept/ConceptCard";
 import { ConceptCardItem, ProductCardItem } from "./types/CardType";
 import ProductCard from "./product/ProductCard";
 import FAQ from "./contact/Faq";
+import CartProvider from "./context/ProductsCartContext";
 
 const conceptCardItems: ConceptCardItem[] = [
   {
@@ -24,42 +25,45 @@ const productCardItems: ProductCardItem[] = [
     img: "/product5.webp",
     backGroundColor: "#533c3c44",
     buttonType: "more",
+    value: 0,
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <MainVisual />
-      <Box as="section" mt="100px">
-        <Heading
-          as="h1"
-          textAlign="center"
-          color="#123d19"
-          fontWeight="medium"
-          fontFamily="'Times New Roman', serif"
-          size="2xl"
-        >
-          CONCEPT
-        </Heading>
-        <ConceptCard cardItems={conceptCardItems} />
-      </Box>
-      <Box as="section" mt="100px">
-        <Heading
-          as="h1"
-          textAlign="center"
-          color="#123d19"
-          fontWeight="medium"
-          fontFamily="'Times New Roman', serif"
-          size="2xl"
-        >
-          PRODUCT
-        </Heading>
-        <ProductCard cardItems={productCardItems} />
-        <Box mt="100px" mb="50px">
-          <FAQ />
+      <CartProvider>
+        <MainVisual />
+        <Box as="section" mt="100px">
+          <Heading
+            as="h1"
+            textAlign="center"
+            color="#123d19"
+            fontWeight="medium"
+            fontFamily="'Times New Roman', serif"
+            size="2xl"
+          >
+            CONCEPT
+          </Heading>
+          <ConceptCard cardItems={conceptCardItems} />
         </Box>
-      </Box>
+        <Box as="section" mt="100px">
+          <Heading
+            as="h1"
+            textAlign="center"
+            color="#123d19"
+            fontWeight="medium"
+            fontFamily="'Times New Roman', serif"
+            size="2xl"
+          >
+            PRODUCT
+          </Heading>
+          <ProductCard cardItems={productCardItems} />
+          <Box mt="100px" mb="50px">
+            <FAQ />
+          </Box>
+        </Box>
+      </CartProvider>
     </>
   );
 }

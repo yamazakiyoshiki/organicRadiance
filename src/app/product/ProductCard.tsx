@@ -1,9 +1,9 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { ProductCardItem } from "../types/CardType";
 import OriginalButton from "../ui/OriginalButton";
-import { FaShoppingCart } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import AnimatedImage from "../ui/AnimatedImage";
+import AddCartButton from "../ui/AddCartButton";
 
 type ProductCardProps = {
   cardItems: ProductCardItem[];
@@ -54,10 +54,8 @@ const ProductCard = ({ cardItems }: ProductCardProps) => {
             </Text>
             <Box>
               {item.buttonType === "cart" ? (
-                <OriginalButton
-                  path="/"
-                  icon={<FaShoppingCart />}
-                  text="Cart"
+                <AddCartButton
+                  cartItem={{ title: item.title, value: item.value }}
                 />
               ) : (
                 <OriginalButton path="/" icon={<IoMdAdd />} text="More" />
