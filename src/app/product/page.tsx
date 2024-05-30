@@ -11,6 +11,7 @@ const productItems: ProductCardItem[] = [
     img: "/product1.webp",
     backGroundColor: "#3c534444",
     buttonType: "cart",
+    value: 4000,
   },
   {
     title: "Organic Serum",
@@ -19,6 +20,7 @@ const productItems: ProductCardItem[] = [
     img: "/product2.webp",
     backGroundColor: "#4444",
     buttonType: "cart",
+    value: 6000,
   },
   {
     title: "Organic Lotion",
@@ -27,6 +29,7 @@ const productItems: ProductCardItem[] = [
     img: "/product3.webp",
     backGroundColor: "#533c3c44",
     buttonType: "cart",
+    value: 5000,
   },
   {
     title: "Organic Cream",
@@ -35,6 +38,7 @@ const productItems: ProductCardItem[] = [
     img: "/product4.webp",
     backGroundColor: "#3c4d5344",
     buttonType: "cart",
+    value: 4500,
   },
 ];
 

@@ -14,4 +14,5 @@ export type ProductCardItem = {
   flexDirection: "row" | "row-reverse";
   backGroundColor: string;
   buttonType: "more" | "cart";
+  value?: number;
 };
