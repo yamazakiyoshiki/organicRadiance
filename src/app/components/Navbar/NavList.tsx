@@ -20,6 +20,7 @@ const NavList = ({ links }: NavListProps) => {
         as="nav"
         gap="20px"
         sx={{
+          zIndex: "10",
           position: "fixed",
           right: "20px",
           top: "20px",
@@ -34,23 +35,6 @@ const NavList = ({ links }: NavListProps) => {
               text={link.content}
               icon={link.icon}
             />
-            // <Button
-            //   key={link.content}
-            //   color="#123d19"
-            //   backgroundColor="#ebebeb"
-            //   _hover={{ bg: "#a1a1a1", transition: "0.3s" }}
-            // >
-            //   <Link
-            //     href={link.path}
-            //     display="flex"
-            //     gap="10px"
-            //     alignItems="center"
-            //     _hover={{ textDecoration: "none" }}
-            //   >
-            //     {link.icon}
-            //     {link.content}
-            //   </Link>
-            // </Button>
           );
         })}
       </Flex>

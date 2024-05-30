@@ -30,6 +30,7 @@ export default function RootLayout({
                     position: "fixed",
                     top: "0px",
                     left: "10px",
+                    zIndex: "10",
                   }}
                 />
               </Link>

@@ -25,7 +25,14 @@ const page = () => {
   return (
     <>
       <Box mt="80px">
-        <Image src="/concept3.jpg" alt="" />
+        <Image
+          src="/concept3.jpg"
+          alt=""
+          width="100%"
+          height="650px"
+          mx="auto"
+          objectFit="cover"
+        />
         <Box mt="100px">
           <Heading
             as="h1"

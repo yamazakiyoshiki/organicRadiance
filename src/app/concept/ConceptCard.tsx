@@ -26,13 +26,6 @@ const ConceptCard = ({ cardItems }: ConceptCardProps) => {
           backgroundColor={item.backGroundColor}
           borderRadius="15px"
         >
-          {/* <Image
-            src={item.img}
-            mx="auto"
-            w={{ base: "250px", md: "300px" }}
-            h={{ base: "250px", md: "300px" }}
-            alt=""
-          /> */}
           <AnimatedImage key={item.title} itemImg={item.img} />
           <Flex
             direction={"column"}
