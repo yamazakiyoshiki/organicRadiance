@@ -58,7 +58,11 @@ const ProductCard = ({ cardItems }: ProductCardProps) => {
                   cartItem={{ title: item.title, value: item.value }}
                 />
               ) : (
-                <OriginalButton path="/" icon={<IoMdAdd />} text="More" />
+                <OriginalButton
+                  path="/product"
+                  icon={<IoMdAdd />}
+                  text="More"
+                />
               )}
             </Box>
           </Flex>

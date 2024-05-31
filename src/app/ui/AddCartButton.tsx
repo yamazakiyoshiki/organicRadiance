@@ -17,9 +17,11 @@ const AddCartButton = ({ cartItem }: AddCartProps) => {
   const dispatch = useCartDispatch();
 
   const addCart = (item: CartItem) => {
+    const randomId = Math.floor(Math.random() * 1000000);
     dispatch({
       type: "ADD_ITEM",
       item: {
+        id: randomId,
         title: item.title,
         value: item.value,
       },
@@ -28,22 +30,28 @@ const AddCartButton = ({ cartItem }: AddCartProps) => {
   };
 
   return (
-    <Button
-      color="#123d19"
-      backgroundColor="#ebebeb"
-      display="flex"
-      gap="10px"
-      mx="auto"
-      alignItems="center"
-      _hover={{
-        bg: "#a1a1a1",
-        transition: "0.3s",
-      }}
-      onClick={() => addCart(cartItem)}
+    <Link
+      href="/product"
+      textDecoration="none"
+      _hover={{ textDecoration: "none" }}
     >
-      <FaShoppingCart />
-      Cart
-    </Button>
+      <Button
+        color="#123d19"
+        backgroundColor="#ebebeb"
+        display="flex"
+        gap="10px"
+        mx="auto"
+        alignItems="center"
+        _hover={{
+          bg: "#a1a1a1",
+          transition: "0.3s",
+        }}
+        onClick={() => addCart(cartItem)}
+      >
+        <FaShoppingCart />
+        Cart
+      </Button>
+    </Link>
   );
 };
 

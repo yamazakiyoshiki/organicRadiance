@@ -1,14 +1,15 @@
 "use client";
 
-import React, {
+import {
   ReactNode,
   createContext,
   useContext,
   useReducer,
-  useEffect,
+  useLayoutEffect,
 } from "react";
 
 type CartItem = {
+  id: number;
   title: string;
   value: number;
 };
@@ -21,7 +22,7 @@ type CartState = {
 
 type CartAction =
   | { type: "ADD_ITEM"; item: CartItem; amount: 1 }
-  | { type: "REMOVE_ITEM"; title: string; amount: 1 }
+  | { type: "REMOVE_ITEM"; id: number; amount: 1 }
   | { type: "CLEAR_CART" };
 
 const initialState: CartState = {
@@ -42,12 +43,8 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       };
       break;
     case "REMOVE_ITEM":
-      const filteredItems = state.items.filter(
-        (item) => item.title !== action.title
-      );
-      const removeItem = state.items.find(
-        (item) => item.title === action.title
-      );
+      const filteredItems = state.items.filter((item) => item.id !== action.id);
+      const removeItem = state.items.find((item) => item.id === action.id);
       newState = {
         ...state,
         items: filteredItems,
@@ -84,7 +81,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     return initial;
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("cartState", JSON.stringify(state));
     }

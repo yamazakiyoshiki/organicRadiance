@@ -2,7 +2,8 @@
 
 import OriginalButton from "@/app/ui/OriginalButton";
 import { Flex, useBreakpointValue } from "@chakra-ui/react";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
+import Cart from "../Cart/Cart";
 
 type NavListProps = {
   links: {
@@ -37,6 +38,7 @@ const NavList = ({ links }: NavListProps) => {
             />
           );
         })}
+        <Cart />
       </Flex>
     </>
   );

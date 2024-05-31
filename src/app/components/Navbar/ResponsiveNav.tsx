@@ -1,9 +1,10 @@
 "use client";
 
-import { Button, Flex, IconButton, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, IconButton, Link } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import { MdDensityMedium, MdOutlineClear } from "react-icons/md";
+import Cart from "../Cart/Cart";
 
 type ResponsiveNavProps = {
   links: {
@@ -18,26 +19,23 @@ const MotionFlex = motion(Flex);
 const ResponsiveNav = ({ links }: ResponsiveNavProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <>
-      <IconButton
-        aria-label="Toggle navigation"
-        icon={isOpen ? <MdOutlineClear /> : <MdDensityMedium />}
-        onClick={() => setIsOpen((prev) => !prev)}
-        display={{ base: "flex", md: "none" }}
-        backgroundColor="#ebebeb"
-        color="#123d19"
-        sx={{
-          position: "fixed",
-          right: "20px",
-          top: "20px",
-          zIndex: "20",
-        }}
-      />
+    <Box position="fixed" right="20px" top="20px" zIndex="20">
+      <Box display={{ base: "flex", md: "none" }} gap="15px">
+        <Cart />
+        <IconButton
+          aria-label="Toggle navigation"
+          icon={isOpen ? <MdOutlineClear /> : <MdDensityMedium />}
+          onClick={() => setIsOpen((prev) => !prev)}
+          backgroundColor="#ebebeb"
+          color="#123d19"
+          zIndex="20"
+        />
+      </Box>
       <AnimatePresence>
         {isOpen && (
           <MotionFlex
             direction="column"
-            gap="100px"
+            gap="50px"
             alignItems="center"
             justifyContent="center"
             position="fixed"
@@ -56,7 +54,7 @@ const ResponsiveNav = ({ links }: ResponsiveNavProps) => {
               return (
                 <Button
                   key={link.content}
-                  onClick={() => setIsOpen((prev) => !prev)}
+                  onClick={() => setIsOpen(false)}
                   color="#123d19"
                   backgroundColor="#ebebeb"
                   _hover={{ bg: "#c5c5c5" }}
@@ -79,7 +77,7 @@ const ResponsiveNav = ({ links }: ResponsiveNavProps) => {
           </MotionFlex>
         )}
       </AnimatePresence>
-    </>
+    </Box>
   );
 };
 

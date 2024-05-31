@@ -1,4 +1,3 @@
-import React from "react";
 import ContactForm from "./ContactForm";
 import { Box, Heading } from "@chakra-ui/react";
 import FAQ from "./Faq";

@@ -1,5 +1,4 @@
 import { Box, Heading, Image } from "@chakra-ui/react";
-import React from "react";
 import ConceptCard from "./ConceptCard";
 import { ConceptCardItem } from "../types/CardType";
 
@@ -28,8 +27,8 @@ const page = () => {
         <Image
           src="/concept3.jpg"
           alt=""
-          width="100%"
-          height="650px"
+          width={{ md: "100%" }}
+          height={{ md: "650px" }}
           mx="auto"
           objectFit="cover"
         />

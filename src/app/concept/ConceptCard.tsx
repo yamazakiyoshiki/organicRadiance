@@ -1,5 +1,4 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
-import React from "react";
 import { ConceptCardItem } from "../types/CardType";
 import OriginalButton from "../ui/OriginalButton";
 import { IoMdAdd } from "react-icons/io";

@@ -1,58 +1,87 @@
 "use client";
 
-import React from "react";
+import { useEffect, useState } from "react";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import { useCartState, useCartDispatch } from "../context/ProductsCartContext";
+import {
+  useCartDispatch,
+  useCartState,
+} from "@/app/context/ProductsCartContext";
 
-const CartPage = () => {
+const Page = () => {
   const { items, total, amount } = useCartState();
   const dispatch = useCartDispatch();
+  const [isClient, setIsClient] = useState(false);
 
-  const removeItem = (title: string) => {
-    dispatch({ type: "REMOVE_ITEM", title, amount: 1 });
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const removeItem = (id: number) => {
+    dispatch({ type: "REMOVE_ITEM", id, amount: 1 });
   };
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
   };
 
+  if (!isClient) {
+    return null;
+  }
+
   return (
-    <Box mx="auto" maxWidth="800px" p="4">
-      <Heading as="h1" mb="6" textAlign="center">
+    <Box my="80px" mx="auto" maxWidth="800px" p="4">
+      <Heading
+        as="h1"
+        textAlign="center"
+        color="#123d19"
+        fontWeight="medium"
+        fontFamily="'Times New Roman', serif"
+        size="2xl"
+      >
         Your Cart
       </Heading>
       {items.length === 0 ? (
-        <Text>Your cart is empty</Text>
+        <Text fontSize="xl" align="center" my="100px" color="red">
+          カートの中身は空です。
+        </Text>
       ) : (
         <>
-          {items.map((item, index) => (
+          {items.map((item) => (
             <Flex
-              key={index}
+              key={item.id}
               justify="space-between"
-              mb="4"
+              mb="4px"
+              mt="20px"
               p="2"
               borderWidth="1px"
               borderRadius="lg"
+              alignItems="center" // ここを追加
+              borderColor="#18151533"
             >
               <Text>{item.title}</Text>
-              <Flex>
+              <Flex alignItems="center">
                 <Text>{item.value}円</Text>
                 <Button
                   ml="4"
                   colorScheme="red"
-                  onClick={() => removeItem(item.title)}
+                  onClick={() => removeItem(item.id)}
                 >
-                  Remove
+                  削除
                 </Button>
               </Flex>
             </Flex>
           ))}
-          <Flex justify="space-between" mt="6">
-            <Text fontSize="lg" fontWeight="bold">
-              Total: {total}円
+          <Flex justify="center" mt="20px" gap="50px">
+            <Text fontSize="lg" fontWeight="bold" textAlign="center">
+              合計点数: {amount}点
             </Text>
+            <Text fontSize="lg" fontWeight="bold" textAlign="center">
+              合計金額: {total}円
+            </Text>
+          </Flex>
+          <Flex justifyContent="center" mt="30px">
             <Button colorScheme="red" onClick={clearCart}>
-              Clear Cart
+              カートを空にする
             </Button>
           </Flex>
         </>
@@ -61,4 +90,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default Page;

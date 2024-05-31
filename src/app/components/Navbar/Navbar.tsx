@@ -1,5 +1,4 @@
 import { HStack } from "@chakra-ui/react";
-import React from "react";
 import NavList from "./NavList";
 import { IoHomeSharp } from "react-icons/io5";
 import { IoMdInformationCircle } from "react-icons/io";
